@@ -15,6 +15,7 @@ namespace dragTree
     {
         int currentRow = 1;
         Stopwatch greenWatch = new Stopwatch();
+
         public Form1()
         {
             InitializeComponent();
@@ -22,11 +23,7 @@ namespace dragTree
 
         private void startButton_Click(object sender, EventArgs e)
         {
-            startTimer.Enabled = true;
-            timer1.Enabled = true;
-            timer2.Enabled = true;
-            timer3.Enabled = true;
-            
+            startTimer.Enabled = true;     
         }
 
         private void resetButton_Click(object sender, EventArgs e)
@@ -43,52 +40,43 @@ namespace dragTree
             greenLabel.BackColor = Color.DarkOliveGreen;
 
             startTimer.Enabled = false;
-            timer1.Enabled = false;
-            timer2.Enabled = false;
-            timer3.Enabled = false;
         }
 
         private void goButton_Click(object sender, EventArgs e)
         {
-
             greenWatch.Stop();
-            TimeSpan elapsed = greenWatch.Elapsed;
 
-            if (currentRow <= 4)
+            
+            if (greenWatch.ElapsedMilliseconds > 0)
+            {
+                outputLabel.Text = "0." + greenWatch.ElapsedMilliseconds.ToString("000");
+            }
+            else
             {
                 outputLabel.Text = "FOUL START";
-            }
-           if (currentRow == 5)
-            {
-                
-                outputLabel.Text = elapsed.ToString(@"ss\:ff");
-            }
-            
+            }           
         }
 
         private void startTimer_Tick(object sender, EventArgs e)
-        { 
-            yellow1.BackColor = Color.Yellow;
-            currentRow=2;
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
         {
-            yellow2.BackColor = Color.Yellow;
-            currentRow=3;
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            yellow3.BackColor = Color.Yellow;
-            currentRow=4;
-        }
-
-        private void timer3_Tick(object sender, EventArgs e)
-        {
-            greenLabel.BackColor = Color.Green;
-            greenWatch.Start();
-            currentRow=5;
+            switch (currentRow)
+            {
+                case 1:
+                    yellow1.BackColor = Color.Yellow;
+                    break;
+                case 2:
+                    yellow2.BackColor = Color.Yellow;
+                    break;
+                case 3:
+                    yellow3.BackColor = Color.Yellow;
+                    break;
+                case 4:
+                    greenLabel.BackColor = Color.Green;
+                    startTimer.Stop();
+                    greenWatch.Start();
+                    break;
+            }
+           currentRow++;
         }
     }
 }
