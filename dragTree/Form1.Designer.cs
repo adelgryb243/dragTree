@@ -39,6 +39,9 @@
             this.greenLabel = new System.Windows.Forms.Label();
             this.yellow3 = new System.Windows.Forms.Label();
             this.startTimer = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // startButton
@@ -88,7 +91,6 @@
             this.outputLabel.Name = "outputLabel";
             this.outputLabel.Size = new System.Drawing.Size(274, 77);
             this.outputLabel.TabIndex = 3;
-            this.outputLabel.Text = "REACTION: ";
             // 
             // label2
             // 
@@ -136,6 +138,21 @@
             this.startTimer.Interval = 400;
             this.startTimer.Tick += new System.EventHandler(this.startTimer_Tick);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 800;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 1200;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // timer3
+            // 
+            this.timer3.Interval = 1600;
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -169,6 +186,9 @@
         private System.Windows.Forms.Label greenLabel;
         private System.Windows.Forms.Label yellow3;
         private System.Windows.Forms.Timer startTimer;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer timer3;
     }
 }
 
